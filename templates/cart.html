@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Shopping Cart Checkout Widget</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!--[if lt IE 9]><script src="{% static '//html5shim.googlecode.com/svn/trunk/html5.js' %}"></script><![endif]-->
+</head>
+<body>
+  <div class="cart">
+    <div class="cart-top">
+      <h2 class="cart-top-title">Checkout</h2>
+      <div class="cart-top-info">3 items</div>
+    </div>
+{% for i in ci %}
+    <ul>
+      <li class="cart-item">
+        <span class="cart-item-pic">
+        <a href="{{i.prodt.get_url}}"><img src="{{i.prodt.img.url}}" alt="{{i.prodt.name}}" style="height:70;width:70;"></a>
+        </span>
+        Item
+        <span class="cart-item-id">{{i.prodt.id}}</span><br>
+        '/.HWE
+        <span class="cart-item-id">{{i.prodt.name}}</span><br>
+        <span class="cart-item-desc">{{i.prodt.desc}}</span><br>
+        <span class="cart-item-price">price:{{i.prodt.price}}/-</span>
+      </li>
+
+    </ul>
+{% endfor %}
+
+    <div class="cart-bottom">
+      Total: $54.80
+      <a href="#" class="cart-button">Continue</a>
+    </div>
+  </div>
+
+  <div class="about">
+    <p class="about-links">
+      <a href="{% static 'https://www.designbombs.com/freebie/shopping-cart-checkout-widget' %}" target="_parent">Download This Freebie</a>
+    </p>
+  </div>
+</body>
+</html>
+{% endblock %}
